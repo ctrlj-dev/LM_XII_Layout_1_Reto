@@ -1,247 +1,242 @@
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@300;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@300;600;700&display=swap");
 @import "media";
 @import "mixins";
 
+// TYPOGRAPHY
+$font-family: "Jost", sans-serif;
+$sectionTitle: 38px;
+$bigTitle: 34px;
+$mediumTitle: 21px;
+$bold: 600;
+$regular: 400;
+
+// COLORS
+$white: white;
+$ligthBlack: #141414;
+$borderBlack:  2px 2px 2px #0f0e0e;
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    background-color: #141414;
-    color: white;
-    font-family: 'Jost', sans-serif;
-    position: relative;
-    overflow-x: hidden;
+  background-color: $ligthBlack;
+  color: $white;
+  font-family: $font-family;
+  position: relative;
+  overflow-x: hidden;
 }
 
 img {
-    width: 100%;
-    max-width: 100%;
+  width: 100%;
+  max-width: 100%;
 }
 
 header {
-    position: fixed;
-    background-color: #141414;
-    box-shadow: 2px 2px 2px #0f0e0e;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px;
-    width: 100%;
-    z-index: 100;
+  position: fixed;
+  background-color: $ligthBlack;
+  box-shadow: $borderBlack;
+  padding: 15px;
+  width: 100%;
+  z-index: 100;
+  @include displayFlex(space-between);
 
-    .header-logo {
+  .header-logo {
+    max-width: 40%;
+    flex: 0 0 40%;
 
-        max-width: 40%;
-        flex: 0 0 40%;
-
-        @media #{$m768} {
-            max-width: 20%;
-            flex: 0 0 20%;
-        }
-
-        @media #{$m1280} {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        img {
-            @media #{$m1280} {
-                max-width: 45%;
-                flex: 0 0 45%;
-            }
-        }
-
-        .platform-title {
-            display: none;
-            font-size: 21px;
-
-            @media #{$m1280} {
-                display: block;
-                max-width: 45%;
-                flex: 0 0 45%;
-            }
-        }
-
-
+    @media #{$m768} {
+      max-width: 20%;
+      flex: 0 0 20%;
     }
 
-    .header-buttons {
-        max-width: 60%;
-        flex: 0 0 60%;
-        text-align: center;
-        margin-left: 5px;
-
-        @media #{$m768} {
-            max-width: 80%;
-            flex: 0 0 80%;
-            text-align: right;
-        }
-
-        &>* {
-            cursor: pointer;
-            display: inline-block;
-            padding: 15px;
-            font-size: 21px;
-            border-radius: 5px;
-
-            @media #{$m1280} {
-                &:hover {
-                    background: white;
-                    color: #0f0e0e;
-                }
-            }
-        }
-
+    @media #{$m1280} {
+      display: flex;
+      @include displayFlex(space-between);
+      flex-wrap: wrap;
     }
+
+    img {
+      @media #{$m1280} {
+        max-width: 45%;
+        flex: 0 0 45%;
+      }
+    }
+
+    .platform-title {
+      display: none;
+      font-size: $mediumTitle;
+
+      @media #{$m1280} {
+        display: block;
+        max-width: 45%;
+        flex: 0 0 45%;
+      }
+    }
+  }
+
+  .header-buttons {
+    max-width: 60%;
+    flex: 0 0 60%;
+    text-align: center;
+    margin-left: 5px;
+
+    @media #{$m768} {
+      max-width: 80%;
+      flex: 0 0 80%;
+      text-align: right;
+    }
+
+    & > * {
+      cursor: pointer;
+      display: inline-block;
+      padding: 15px;
+      font-size: $mediumTitle;
+      border-radius: 5px;
+
+      @media #{$m1280} {
+        &:hover {
+          background: $white;
+          color: #0f0e0e;
+        }
+      }
+    }
+  }
 }
 
 main {
+  padding: 230px 15px 15px 15px;
 
-    padding: 230px 15px 15px 15px;
+  .section-title {
+    font-size:$sectionTitle;
+    margin: 15px 0;
 
-    .section-title {
-        font-size: 38px;
-        margin: 15px 0;
-
-        @media #{$m768} {
-            font-size: 34px;
-        }
-
-        #top-text::before {
-            content: "3";
-            display: inline-block;
-            font-weight: 600;
-            position: relative;
-
-            @media #{$m1280} {
-                content: "5";
-            }
-        }
+    @media #{$m768} {
+      font-size: $bigTitle;
     }
 
-    .top {
-        display: flex;
-        flex-direction: column-reverse;
-        flex-wrap: wrap;
-        margin-bottom: 30px;
+    #top-text::before {
+      content: "3";
+      display: inline-block;
+      font-weight: $bold;
+      position: relative;
 
-        @media #{$m768} {
-            justify-content: flex-end;
-            flex-direction: row-reverse;
-        }
+      @media #{$m1280} {
+        content: "5";
+      }
+    }
+  }
 
-        .top-item {
-            cursor: pointer;
-            flex: 0 0 100%;
-            max-width: 100%;
-            width: 100%;
+  .top {
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
 
-            &:first-child,
-            &:nth-child(2) {
-                display: none;
-
-                @media #{$m1280} {
-                    display: block;
-                }
-            }
-
-            @media #{$m768} {
-                flex: 0 0 33%;
-                max-width: 33%;
-            }
-
-            @media #{$m1280} {
-                flex: 0 0 20%;
-                max-width: 20%;
-                min-width: 225px;
-
-
-                &:hover {
-                    z-index: 80;
-                    width: 115%;
-                    max-width: 115%;
-                    position: relative;
-                    top: -15px;
-                }
-
-                &:hover img {
-                    width: 115%;
-                    max-width: 115%;                    
-                }
-
-            }
-
-
-
-        }
+    @media #{$m768} {
+      justify-content: flex-end;
+      flex-direction: row-reverse;
     }
 
-    .first {
-        margin-bottom: 30px;
-    }
+    .top-item {
+      cursor: pointer;
+      flex: 0 0 100%;
+      max-width: 100%;
+      width: 100%;
 
-    .first,
-    .second {
-        display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-    }
-
-    .item {
-
-        width: 100%;
-
-        cursor: pointer;
-        margin-bottom: 5px;
-
-        @include hoverScale;
-
-
-        @media #{$m768} {
-            flex: 0 0 33%;
-            max-width: 33%;
-        }
+      &:first-child,
+      &:nth-child(2) {
+        display: none;
 
         @media #{$m1280} {
-            flex: 0 0 25%;
-            max-width: 25%;
-            min-width: 250px;
+          display: block;
+        }
+      }
 
-            &:hover {
-                z-index: 80;
-                position: relative;
-                top: -15px;
-            }
+      @media #{$m768} {
+        flex: 0 0 33%;
+        max-width: 33%;
+      }
 
-            &:hover img {
-                background-color: #141414;
-                padding: 5px;
-            }
+      @media #{$m1280} {
+        flex: 0 0 20%;
+        max-width: 20%;
+        min-width: 225px;
+
+        &:hover {
+          z-index: 80;
+          width: 115%;
+          max-width: 115%;
+          position: relative;
+          top: -15px;
         }
 
-        @media #{$m1920} {
-            flex: 0 0 16.6666%;
-            max-width: 16.6666%;
+        &:hover img {
+          width: 115%;
+          max-width: 115%;
         }
-
-        &:nth-child(5),
-        &:nth-child(6) {
-            @media #{$m1280} {
-                flex: 0 0 50%;
-                max-width: 50%;
-            }
-
-            @media #{$m1920} {
-                flex: 0 0 16.6666%;
-                max-width: 16.6666%;
-            }
-        }
-
+      }
     }
+  }
+
+  .first {
+    margin-bottom: 30px;
+  }
+
+  .first,
+  .second {
+    @include displayFlex("flex-start");
+    flex-wrap: wrap;
+  }
+
+  .item {
+    width: 100%;
+
+    cursor: pointer;
+    margin-bottom: 5px;
+
+    @include hoverScale;
+
+    @media #{$m768} {
+      flex: 0 0 33%;
+      max-width: 33%;
+    }
+
+    @media #{$m1280} {
+      flex: 0 0 25%;
+      max-width: 25%;
+      min-width: 250px;
+
+      &:hover {
+        z-index: 80;
+        position: relative;
+        top: -15px;
+      }
+
+      &:hover img {
+        background-color: $ligthBlack;
+        padding: 5px;
+      }
+    }
+
+    @media #{$m1920} {
+      flex: 0 0 16.6666%;
+      max-width: 16.6666%;
+    }
+
+    &:nth-child(5),
+    &:nth-child(6) {
+      @media #{$m1280} {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+
+      @media #{$m1920} {
+        flex: 0 0 16.6666%;
+        max-width: 16.6666%;
+      }
+    }
+  }
 }
