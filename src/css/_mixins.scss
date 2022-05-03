@@ -1,0 +1,17 @@
+@mixin hoverScale {
+  transition: transform 150ms ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 150ms ease-in-out;
+    @media #{$m1920} {
+      transform: scale(1.15);
+    }
+    img {
+      transform: scale(1.05);
+      transition: transform 150ms ease-in-out;
+      @media #{$m1920} {
+        transform: scale(1.15);
+      }
+    }
+  }
+}
